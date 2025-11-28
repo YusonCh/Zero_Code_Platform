@@ -1,0 +1,43 @@
+/* 全局样式 - 修复 Safari 兼容性问题 */
+
+/* 修复 Ant Design 按钮的 user-select 兼容性问题 */
+/* 使用更通用的选择器以确保覆盖 Ant Design 的动态样式 */
+.ant-btn,
+[class*="ant-btn"] {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+/* 修复其他可能使用 user-select 的元素 */
+* {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+/* 文本输入框和文本区域应该允许选择 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+/* 帮助浏览器扩展正确识别表单字段，减少扩展错误 */
+input,
+textarea {
+  /* 确保扩展可以正确访问元素 */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* 为聊天输入框添加特殊标记，避免密码管理器干扰 */
+textarea[data-lpignore="true"] {
+  /* 明确标记为非密码字段 */
+  data-form-type: "other";
+}
+
